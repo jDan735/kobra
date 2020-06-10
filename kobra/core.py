@@ -39,7 +39,8 @@ def kobra():
                     .replace("__version__", "")
                     .replace(" ", "")
                     .replace("\"", "")
-                    .replace("=", ""))
+                    .replace("=", "")
+                    .replace("\n", ""))
 
             version = input("Enter version (current: " + moduleVersion + ") ")
             with open(os.getcwd() + "\\" + moduleName + "\\__init__.py", "w") as init:
