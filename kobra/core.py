@@ -18,7 +18,7 @@ def kobra():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("command", nargs="?", default="install", help="Run command (deploy, install, develop)")
+    parser.add_argument("command", nargs="?", default="install", help="Run command (publish, install, develop)")
     parser.add_argument("-v", "--version", action="store_true", help="Show version")
 
     args = parser.parse_args()
@@ -27,7 +27,7 @@ def kobra():
         print("Kobra v" + __version__)
         quit()
 
-    if args.command == "deploy":
+    if args.command == "publish":
         cwd = os.getcwd()
         moduleName = getModuleName(os.listdir("."))
         if moduleName == None:

@@ -26,10 +26,10 @@ A command for developers to use the module folder as the main:
 kobra develop
 ```
 It is desirable to use when changing locales and configs of your module, which are in separate files.
-### 📦 Deploy
+### 📦 Publish
 With this command, you can change the version of your module, create a build with `python setup.py sdist` and release to pypi.org:
 ```
-kobra deploy
+kobra publish
 ```
 For the command to work in your module there must be a file `__init__.py`, for example the following:
 ```python
