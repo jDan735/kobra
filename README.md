@@ -21,7 +21,7 @@ or:
 kobra install
 ```
 ### 🧑‍💻 Develop
-A team for developers to use the module folder as the main:
+A command for developers to use the module folder as the main:
 ```
 kobra develop
 ```
