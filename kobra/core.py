@@ -52,7 +52,7 @@ def kobra():
                     os.remove("dist" + "\\" + file)
             os.system("python setup.py sdist")
             os.system("twine upload dist\\*")
-            os.system("git add " + moduleName + "__init__.py")
+            os.system("git add " + moduleName + "\\" + "__init__.py")
             os.system("git commit -m '" + moduleName + " v" + version + " has been released" + "'")
             if input("git push?(y/n)") == "y":
                 os.system("git push")
