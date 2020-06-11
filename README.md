@@ -1,5 +1,5 @@
 # 🐍 Kobra
-Wrapper for twine &amp; python setup.py. The name of this module is not an error but a combination of the words king and cobra.
+Wrapper for `twine` &amp; `python setup.py`. The name of this module is not an error but a combination of the words king and cobra.
 ## 💾 Install
 Installing the project by using pip:
 ```
@@ -9,8 +9,8 @@ If you have \*nix such a system (Android, Mac OS, Free BSD, Linux) you may not h
 ```
 pip3 install kobra
 ```  
-## ⚙️ Functionality
-Part of the functionality is copying from `python setup.py`
+## ⚙️ Functions
+Part of the functionality is copying from `python setup.py`.
 ### 💾 Install
 Installing the module from source code:
 ```
@@ -25,7 +25,7 @@ A command for developers to use the module folder as the main:
 ```
 kobra develop
 ```
-It is desirable to use when changing locales and configs of your module, which are in separate files
+It is desirable to use when changing locales and configs of your module, which are in separate files.
 ### 📦 Deploy
 With this command, you can change the version of your module, create a build with `python setup.py sdist` and release to pypi.org:
 ```
