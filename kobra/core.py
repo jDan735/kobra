@@ -42,7 +42,7 @@ def kobra():
                     .replace("=", "")
                     .replace("\n", ""))
 
-            os.system("git restore --staged")
+            os.system("git restore --staged .")
 
             version = input("Enter version (current: " + moduleVersion + ") ")
             with open(os.getcwd() + "\\" + moduleName + "\\__init__.py", "w") as init:
@@ -53,7 +53,7 @@ def kobra():
             os.system("python setup.py sdist")
             os.system("twine upload dist\\*")
             os.system("git add " + moduleName + "__init__.py")
-            os.system("git commit -m " + "'" +  moduleName + " v" + version + " has been released'")
+            os.system("git commit -m '" + moduleName + " v" + version + " has been released" + "'")
             if input("git push?(y/n)") == "y":
                 os.system("git push")
 
@@ -62,6 +62,6 @@ def kobra():
 
     elif args.command == "develop":
         os.system("python setup.py develop")
-        
+
     else:
         print("Enter command!")
