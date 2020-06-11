@@ -35,7 +35,7 @@ For the command to work in your module there must be a file `__init__.py`, for e
 ```python
 __version__ = "0.2.1"
 ```
-You can also use the version from `__init__.py' in your `setup.py'.:
+You can also use the version from `__init__.py` in your `setup.py`.:
 ```python
 from setuptools import setup
 from <modulename> import __version__
