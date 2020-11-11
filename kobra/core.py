@@ -1,6 +1,11 @@
-from kobra import __version__
+from kobra import __version__, __logo__
+from colorama import init
+
 import argparse
 import os
+
+init()
+
 
 def getModuleName(filelist):
     folders = []
@@ -14,12 +19,22 @@ def getModuleName(filelist):
             if file == "__init__.py":
                 return folder
 
+
 def kobra():
+    for line in __logo__:
+        print(f"\033[32m{line}\033[0m")
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("command", nargs="?", default="install", help="Run command (publish, install, develop)")
-    parser.add_argument("-v", "--version", action="store_true", help="Show version")
+    parser.add_argument("command",
+                        nargs="?",
+                        default="install",
+                        help="Run command (publish, install, develop)")
+
+    parser.add_argument("-v",
+                        "--version",
+                        action="store_true",
+                        help="Show version")
 
     args = parser.parse_args()
 
@@ -30,30 +45,35 @@ def kobra():
     if args.command == "publish":
         cwd = os.getcwd()
         moduleName = getModuleName(os.listdir("."))
-        if moduleName == None:
+
+        if moduleName is None:
             print("Program can't find module folder")
             quit()
         else:
-            with open(os.getcwd() + "\\" + moduleName + "\\" + "__init__.py") as init:
+            with open(f'{cwd}\\{moduleName}\\__init__.py') as init:
                 moduleVersion = (init.read()
-                    .replace("__version__", "")
-                    .replace(" ", "")
-                    .replace("\"", "")
-                    .replace("=", "")
-                    .replace("\n", ""))
+                                     .replace("__version__", "")
+                                     .replace(" ", "")
+                                     .replace("\"", "")
+                                     .replace("=", "")
+                                     .replace("\n", ""))
 
             os.system("git restore --staged .")
 
             version = input("Enter version (current: " + moduleVersion + ") ")
-            with open(os.getcwd() + "\\" + moduleName + "\\__init__.py", "w") as init:
+
+            with open(f"{cwd}\\{moduleName}\\__init__.py", "w") as init:
                 init.write("__version__ = \"" + version + "\"")
+
             if os.path.exists("dist"):
                 for file in os.listdir("dist"):
                     os.remove("dist" + "\\" + file)
+
             os.system("python setup.py sdist")
             os.system("twine upload dist\\*")
             os.system("git add " + moduleName + "\\" + "__init__.py")
-            os.system("git commit -m \"" + moduleName + " v" + version + " released\"")
+            os.system(f"git commit -m \"{moduleName} v{version} released\"")
+
             if input("git push?(y/n)") == "y":
                 os.system("git push")
 
